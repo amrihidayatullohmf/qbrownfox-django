@@ -1,0 +1,96 @@
+{% load static %}
+
+{% include 'home/header.html' %}
+
+<div class="main-slider">
+  <div class="slide-item">
+     <div class="caption">
+       <div class="caption-wrap">
+       <img src="{% static 'home/images/text.png' %}" alt="Text Slider">
+       <br>
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+       Vestibulum a magna non elit porta tincidunt et eget odio.<br>
+       In elit dui, placerat nec tellus id
+       </div>
+     </div>
+     <img src="{% static 'home/images/coffee-cup-wallpaper-7.jpg' %}" alt="Home Slider">
+  </div>
+</div>
+
+<div class="signature">
+  <div class="signature-wrap">
+    <div class="thumbs-area">
+      {% for thumb in thumbs %}
+        <img src="{% static thumb %}" alt="">
+      {% endfor %}
+    </div>
+    <div class="text-area">
+      <h1 class="title">Our<br>Signature</h1>
+      <div class="desc">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a magna non elit porta tincidunt et eget odio. In elit dui, placerat nec tellus id, finibus suscipit tortor. Cras lectus ex, placerat quis gravida non, mollis et est. Ut vulputate efficitur aliquet. Ut mi elit, commodo eu lorem at, faucibus consectetur nulla. Duis varius metus lectus
+        <br><br>
+        <span>
+          In elit dui, placerat nec tellus id, finibus suscipit tortor. Cras lectus ex, placerat quis gravida non, mollis et est. Ut vulputate efficitur aliquet. Ut mi elit, commodo eu lorem at, faucibus consectetur nulla. Duis varius metus lectus
+        </span>
+      </div>
+      <button>Get Weekly Update</button>
+    </div>
+  </div>
+</div>
+
+<div class="menus">
+  <div class="menus-wrap">
+    <h1>
+      Our Menus<br>
+      <div class="line"></div>
+    </h1>
+    <div class="menus-panel">
+      {% for menu in menus %}
+      <div class="menus-box">
+        <img src="{% static menu.thumb %}" alt="">
+        <div class="text-box">
+          <h2>{{ menu.name }}</h2>
+          <div class="desc">{{ menu.desc }}</div>
+          <button>View More</button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="contact">
+  <div class="contact-wrap">
+    <div class="map-area" id="map"></div>
+    <div class="text-area">
+      <h1>Get In Touch</h1>
+      <div class="line"></div>
+      <div class="desc">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a magna non elit porta tincidunt et eget odio. In elit dui, placerat nec tellus id, finibus suscipit tortor.
+      </div>
+      <div class="form">
+        <form action="{% url 'home:guestbook' %}" method="post" id="guestbookform">
+          {% csrf_token %}
+          <div class="field">
+            <input type="text" name="gname" value="" id="gname" placeholder="Your Name">
+          </div>
+          <div class="field">
+            <input type="text" name="gmail" value="" id="gmail" placeholder="Your E-Mail">
+          </div>
+          <div class="field">
+            <input type="text" name="gphone" value="" id="gphone" placeholder="Your Phone Number">
+          </div>
+          <div class="field">
+            <button type="submit" class="sbt">Submit</button>
+            <button type="button" class="ldr">Sending...</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+{% include 'home/footer.html' %}
